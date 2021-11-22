@@ -11,6 +11,22 @@ module.exports = class Dotan {
         return crypto.scryptSync(this.password, 'salt', 24);
     }
 
+    getKeyHex(){
+        return this.getKey().toString("hex")
+    }
+
+    getKeyBufferFromHex(key){
+        return Buffer.from(key, "hex")
+    }
+
+    getKeyBase64(){
+        return this.getKey().toString("base64")
+    }
+
+    getKeyBufferFromBase64(key){
+        return Buffer.from(key, "base64")
+    }
+
     encrypted(text) {
         const cipher = crypto.createCipheriv(
             this.algorithm,
